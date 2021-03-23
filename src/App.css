@@ -8,3 +8,9 @@ ol {
   margin-right: auto;
   text-align: left;
 }
+
+table {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
