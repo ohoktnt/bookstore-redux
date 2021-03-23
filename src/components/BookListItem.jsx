@@ -1,9 +1,9 @@
 import store from './booksInventory.js'
 
 export default function BookListItem(props) {
-  const {name, price, category, description} = props.book
+  const {name, price, category, description, id} = props.book
   return (
-    <tr>
+    <tr id={id} onClick={() => props.toggle(id)}>
       <td>{name}</td>
       <td>${price/100}</td>
       <td>{category}</td>
