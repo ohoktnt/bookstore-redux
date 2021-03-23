@@ -16,32 +16,32 @@ function booksReducer(state = books, action) {
       break
     case 'addBook':
       const newBook = action.newBook
+      newBook.id = Math.random().toString(36).substring(2,8)
       return [...state, newBook]
     case 'deleteBook':
       // filter through the state, and remove selected book
       const discard = action.discardBook
-      const newStateD = [...state]
-      return newStateD.filter(book => book !== discard)
+      const newStateD = state.filter(book => book !== discard)
+      return newStateD
     case 'updateBook':
       // find the book with right ID, remove from state, add new book to state
       const bookToUpdate = action.updateBook
-      const newStateU = [...state]
-      // remove old book
-      newStateU.map(book => {
+      const newStateU = state.map(book => {
         if (book.id === bookToUpdate.id) {
           return bookToUpdate
         } else {
           return book
         }
       })
+      console.log(newStateU)
       return newStateU
     default:
       // shouldnt hit here
-      console.log('default in reducer triggered')
       return state
   }
 }
 
 const store = createStore(booksReducer)
+
 
 export default store;

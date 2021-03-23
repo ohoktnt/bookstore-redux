@@ -11,8 +11,17 @@ export default function BookList(props) {
 
   // book list
   // each book to have: name, price, category, description
-  const books = store.getState()
+  let books = store.getState()
 
+  function render() {
+    const state = store.getState()
+    books = state;
+  }
+
+  render()
+  store.subscribe(render)
+
+  // manage pop up window for book details (new and update)
   const [windowState, setWindowState] = useState(false)
   const [selectedBook, setSelectedBook] = useState(null)
 
@@ -25,16 +34,21 @@ export default function BookList(props) {
       setSelectedBook(null)
     }
   }
+
+  const deleteBook = (e, id) => {
+    e.preventDefault()
+    const bookById = books.find(book => book.id === id);
+    store.dispatch({type: 'deleteBook', discardBook: bookById})
+  }
   
-  const parsedBooksList = books.map(book => <BookListItem book={book} toggle={windowToggle}/>)
+  const parsedBooksList = books.map(book => <BookListItem book={book} toggle={windowToggle} delete={deleteBook}/>)
 
   return (
     <div>
       <table>
         <thead>
           <tr>
-            <th colspan='4'>Books Inventory</th>
-            <th><button onClick={() => store.dispatch({type: 'testBook'})}>Add Book</button></th>
+            <th colSpan='4'>Books Inventory</th>
             <th><button onClick={() => windowToggle(null)}>Add Book TEST</button></th>
           </tr>
           <tr>

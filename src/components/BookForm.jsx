@@ -1,30 +1,53 @@
+import store from './booksInventory.js'
 
 export default function BookForm(props) {
   const { name, price, category, description, id} = props.book ? props.book : ''
 
+  // logic to manage if its a new book or update the book
+
+  const saveBook = function(e) {
+    e.preventDefault();
+    // collect all values from input and save as newBook
+    const newBook = {};
+    newBook.name = document.getElementById('name').value;
+    newBook.price = document.getElementById('price').value;
+    newBook.category = document.getElementById('category').value;
+    newBook.description = document.getElementById('description').value;
+    console.log(newBook)
+    // updating book
+    if (props.book) {
+      store.dispatch({type: 'updateBook', updateBook: {...newBook, id: props.book.id}})
+    // adding book
+    } else {
+      store.dispatch({type: 'addBook', newBook: newBook})
+    }
+    console.log('dispatch call completed')
+    props.toggle();
+  }
+
   return (
-    <div class="modal">
-      <div class="modal-content">
+    <div className="modal">
+      <div className="modal-content">
         <span onClick={() => props.toggle()}>&times;</span>
-        <h3>New/Update Book</h3>
-        <form>
+        <h3>{props.book ? "Update Book Details" : "Add New Book"}</h3>
+        <form id="book-form">
           <div>
-            <label for="title">Title: </label>
-            <input type="text" id="title" required value={name}></input>
+            <label for="name">name: </label>
+            <input type="text" id="name" required defaultValue={name}></input>
           </div>
           <div>
             <label for="price">Price in Cents: </label>
-            <input type="text" id="price" required value={price}></input>
+            <input type="text" id="price" required defaultValue={price}></input>
           </div>
           <div>
             <label for="category">Category: </label>
-            <input type="text" id="category" required value={category}></input>
+            <input type="text" id="category" required defaultValue={category}></input>
           </div>
           <div>
             <label for="description">Description: </label>
-            <input type='text' id="description" required value={description}></input>
+            <input type='text' id="description" required defaultValue={description}></input>
           </div>
-          <button>Save</button>
+          <button onClick={(e) => saveBook(e)}> {props.book ? "Update" : "Add"}</button>
         </form>
       </div>
     </div>
