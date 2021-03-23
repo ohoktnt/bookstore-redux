@@ -17,6 +17,7 @@ export default function BookList(props) {
       <thead>
         <tr>
           <th colspan='4'>List of Books</th>
+          <th><button>Add Book</button></th>
         </tr>
         <tr>
           <td>Name</td>
