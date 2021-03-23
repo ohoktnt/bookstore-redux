@@ -1,3 +1,4 @@
+import store from './booksInventory.js'
 
 export default function BookListItem(props) {
   const {name, price, category, description} = props.book
