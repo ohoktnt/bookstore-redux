@@ -35,10 +35,10 @@ export default function BookList(props) {
     }
   }
 
-  const deleteBook = (e, id) => {
-    e.preventDefault()
+  const deleteBook = function(id) {
     const bookById = books.find(book => book.id === id);
     store.dispatch({type: 'deleteBook', discardBook: bookById})
+    setWindowState(null)
   }
   
   const parsedBooksList = books.map(book => <BookListItem book={book} toggle={windowToggle} delete={deleteBook}/>)

@@ -22,6 +22,7 @@ function booksReducer(state = books, action) {
       // filter through the state, and remove selected book
       const discard = action.discardBook
       const newStateD = state.filter(book => book !== discard)
+      console.log(newStateD)
       return newStateD
     case 'updateBook':
       // find the book with right ID, remove from state, add new book to state
