@@ -35,9 +35,11 @@ export default function BookList(props) {
     }
   }
 
-  const deleteBook = function(id) {
+  const deleteBook = function(e, id) {
+    e.stopPropagation();
     const bookById = books.find(book => book.id === id);
     store.dispatch({type: 'deleteBook', discardBook: bookById})
+    // force render to show book removed
     setWindowState(null)
   }
   

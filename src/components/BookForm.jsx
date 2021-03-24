@@ -21,7 +21,6 @@ export default function BookForm(props) {
     } else {
       store.dispatch({type: 'addBook', newBook: newBook})
     }
-    console.log('dispatch call completed')
     props.toggle();
   }
 
