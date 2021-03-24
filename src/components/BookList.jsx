@@ -43,7 +43,7 @@ export default function BookList(props) {
     setWindowState(null)
   }
   
-  const parsedBooksList = books.map(book => <BookListItem book={book} toggle={windowToggle} delete={deleteBook}/>)
+  const parsedBooksList = books.map(book => <BookListItem key={book.id} book={book} toggle={windowToggle} delete={deleteBook}/>)
 
   return (
     <div>

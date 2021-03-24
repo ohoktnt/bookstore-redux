@@ -16,7 +16,7 @@ export default function BookForm(props) {
     console.log(newBook)
     // updating book
     if (props.book) {
-      store.dispatch({type: 'updateBook', updateBook: {...newBook, id: props.book.id}})
+      store.dispatch({type: 'updateBook', updateBook: {...newBook, id: id}})
     // adding book
     } else {
       store.dispatch({type: 'addBook', newBook: newBook})
