@@ -25,10 +25,12 @@ tr td {
   top: 20em;
   left: 20em;
   z-index: 1;
-  width: 20%;
+  width: fit-content;
   height: 20%;
   background-color: white;
   border: 1px solid grey;
+  block-size: fit-content;
+  
 }
 
 span {

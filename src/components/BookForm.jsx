@@ -32,20 +32,20 @@ export default function BookForm(props) {
         <h3>{props.book ? "Update Book Details" : "Add New Book"}</h3>
         <form id="book-form">
           <div>
-            <label for="name">name: </label>
-            <input type="text" id="name" required defaultValue={name}></input>
+            <label for="name">Name: </label>
+            <input type="text" id="name" defaultValue={name}></input>
           </div>
           <div>
             <label for="price">Price in Cents: </label>
-            <input type="text" id="price" required defaultValue={price}></input>
+            <input type="text" id="price" defaultValue={price}></input>
           </div>
           <div>
             <label for="category">Category: </label>
-            <input type="text" id="category" required defaultValue={category}></input>
+            <input type="text" id="category" defaultValue={category}></input>
           </div>
           <div>
             <label for="description">Description: </label>
-            <input type='text' id="description" required defaultValue={description}></input>
+            <input type='text' id="description" defaultValue={description}></input>
           </div>
           <button onClick={(e) => saveBook(e)}> {props.book ? "Update" : "Add"}</button>
         </form>
