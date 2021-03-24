@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
-import { Provider } from 'react-redux'
-import store from './components/booksInventory.js'
+import { Provider } from 'react-redux';
+import store from './booksInventory.js';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
